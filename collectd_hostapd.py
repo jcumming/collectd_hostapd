@@ -275,6 +275,7 @@ def read_function():
         continue
     # Configure the collectd data sending object
     VALUES.plugin="hostapd"
+    VALUES.instance=INTERFACE
     VALUES.type='gauge'
     VALUES.type_instance='stations-count'
     # If no clients are connected, just send 0 to the metrics storage backend,
