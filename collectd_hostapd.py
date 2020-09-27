@@ -216,7 +216,7 @@ def config_function(config):
         exit(1)
     else:
         # Get the interface index from the interface name
-        pack = struct.pack('16sI', 'wlan0', 0)
+        pack = struct.pack('16sI', INTERFACE, 0)
         sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             info = struct.unpack('16sI', fcntl.ioctl(sk.fileno(), 0x8933, pack))
