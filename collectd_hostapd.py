@@ -145,7 +145,8 @@ def getStationInfo_callback(msg, results):
     if tb[nl80211.NL80211_ATTR_MAC]:
         # Convert the station MAC address to something human readable
         raw_mac = nla_get_string(tb[nl80211.NL80211_ATTR_MAC])
-        station.mac_addr = "%x:%x:%x:%x:%x:%x" % struct.unpack("BBBBBB",raw_mac)
+        if len(raw_mac) == 6:
+            station.mac_addr = "%x:%x:%x:%x:%x:%x" % struct.unpack("BBBBBB",raw_mac)
     if sinfo[nl80211.NL80211_STA_INFO_RX_BYTES]:
         station.rx_bytes = nla_get_u32(sinfo[nl80211.NL80211_STA_INFO_RX_BYTES])
     if sinfo[nl80211.NL80211_STA_INFO_TX_BYTES]:
